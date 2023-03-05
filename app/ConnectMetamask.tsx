@@ -33,18 +33,6 @@ const MetamaskProvider: React.FC<{}> = ({ children }) => {
   };
 
   const activateMetamask = () => {
-    //console.log("activateMetamask run");
-    activate(injected, onError, true).catch((err) => {
-      //console.error(err);
-      //debugger;
-    });
-  };
-
-  if (!isMetaMaskActive) {
-   // activateMetamask();
-  }
-/*
-  useEffect(() => {
     const switchEthereumChain = async () => {
       debugger;
       try {
@@ -68,8 +56,24 @@ const MetamaskProvider: React.FC<{}> = ({ children }) => {
         // handle other "switch" errors
       }
     };
-    switchEthereumChain();
-  }, [isMetaMaskActive]);*/
+    
+    switchEthereumChain().then(() => {
+    //console.log("activateMetamask run");
+    activate(injected, onError, true).catch((err) => {
+      
+    })})
+  };
+
+  if (!isMetaMaskActive) {
+   // activateMetamask();
+  }
+
+
+
+  //useEffect(() => {
+    
+    //switchEthereumChain();
+  //}, [isMetaMaskActive]);
 
   return (
     <MetamaskContext.Provider
