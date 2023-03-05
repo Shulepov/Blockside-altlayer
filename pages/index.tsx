@@ -1,14 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useWeb3React } from "@web3-react/core";
 
 import { useMetamask } from "../app/ConnectMetamask";
 import nftImage from "../public/nft.png";
 import useMinter from "../app/useMinter";
-import Modal from "../components/Modal";
 import { useRouter } from "next/dist/client/router";
-import Web3 from "web3";
 import { useContracts } from "../app/ContractsProvider";
 
 import { toast } from "react-toastify";
@@ -16,7 +13,6 @@ import { toast } from "react-toastify";
 function MainPage() {
   const { active: isMetaMaskActive, activate } = useWeb3React();
   const { activateMetamask } = useMetamask();
-  const { accountAddress } = useContracts();
   const { mintNft, mintedAmount, alreadyMinted } = useMinter();
   const router = useRouter();
 
